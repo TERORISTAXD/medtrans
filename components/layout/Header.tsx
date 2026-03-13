@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Phone, Menu, X, Ambulance, Globe } from "lucide-react";
+import { Phone, Menu, X, Ambulance } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
@@ -79,7 +80,7 @@ export function Header() {
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
-                                    href={link.href as any}
+                                    href={link.href as Parameters<typeof Link>[0]["href"]}
                                     className={cn(
                                         "rounded-md px-4 py-2 text-sm font-medium transition-colors duration-150",
                                         pathname === link.href
@@ -103,9 +104,11 @@ export function Header() {
                                     title={languages[locale as keyof typeof languages]?.label}
                                 >
                                     <div className="relative h-5 w-7 overflow-hidden rounded-sm shadow-sm">
-                                        <img
+                                        <Image
                                             src={languages[locale as keyof typeof languages]?.flag}
                                             alt=""
+                                            width={28}
+                                            height={20}
                                             className="h-full w-full object-cover"
                                         />
                                     </div>
@@ -121,7 +124,7 @@ export function Header() {
                                                     locale === "bg" ? "bg-brand-red/5 text-brand-red font-semibold" : "text-gray-700"
                                                 )}
                                             >
-                                                <img src="/images/flags/bg.svg" alt="" className="h-3.5 w-5 rounded-sm object-cover shadow-sm" />
+                                                <Image src="/images/flags/bg.svg" alt="" width={20} height={14} className="h-3.5 w-5 rounded-sm object-cover shadow-sm" />
                                                 <span>Български</span>
                                             </button>
                                             <button
@@ -131,7 +134,7 @@ export function Header() {
                                                     locale === "en" ? "bg-brand-red/5 text-brand-red font-semibold" : "text-gray-700"
                                                 )}
                                             >
-                                                <img src="/images/flags/en.svg" alt="" className="h-3.5 w-5 rounded-sm object-cover shadow-sm" />
+                                                <Image src="/images/flags/en.svg" alt="" width={20} height={14} className="h-3.5 w-5 rounded-sm object-cover shadow-sm" />
                                                 <span>English</span>
                                             </button>
                                         </div>
@@ -174,7 +177,7 @@ export function Header() {
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
-                                    href={link.href as any}
+                                    href={link.href as Parameters<typeof Link>[0]["href"]}
                                     className={cn(
                                         "rounded-md px-4 py-3 text-base font-medium transition-colors",
                                         pathname === link.href
