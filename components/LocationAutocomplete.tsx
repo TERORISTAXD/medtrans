@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Search, X, Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { MapPin, Search, X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import type { ComponentType } from "react";
 
 interface Settlement {
     n: string; // Name (Bulgarian)
@@ -20,7 +20,7 @@ interface LocationAutocompleteProps {
     onChange: (settlement: Settlement) => void;
     placeholder: string;
     label: string;
-    icon?: any;
+    icon?: ComponentType<{ className?: string }>;
 }
 
 export function LocationAutocomplete({ value, onChange, placeholder, label, icon: Icon = MapPin }: LocationAutocompleteProps) {

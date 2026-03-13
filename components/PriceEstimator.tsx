@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Phone, ArrowRight, Check, Activity, Users, Repeat, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
