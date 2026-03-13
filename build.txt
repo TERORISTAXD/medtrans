@@ -1,0 +1,33 @@
+
+> medtrans@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.29
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/3) ...
+ ✓ Generating static pages (3/3)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /_not-found                          873 B          88.1 kB
+├ ƒ /[locale]                            501 B           149 kB
+├ ƒ /[locale]/contact                    2.84 kB         157 kB
+├ ƒ /[locale]/fleet                      501 B           149 kB
+└ ƒ /[locale]/services                   501 B           149 kB
++ First Load JS shared by all            87.2 kB
+  ├ chunks/117-ed4af40a24eacb3e.js       31.6 kB
+  ├ chunks/fd9d1056-4f4d001fec754e10.js  53.6 kB
+  └ other shared chunks (total)          1.95 kB
+
+
+ƒ Middleware                             45.6 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
