@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Phone, ArrowRight, Check, Activity, Users, Repeat, MapPin } from "lucide-react";
+import { Phone, ArrowRight, Check, Activity, Users, Repeat } from "lucide-react";
+import type { ComponentType } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { LocationAutocomplete } from "./LocationAutocomplete";
@@ -57,8 +58,8 @@ export function PriceEstimator() {
     const [estimate, setEstimate] = useState({ min: 0, max: 0 });
 
     useEffect(() => {
-        let base = 50;
-        let perKm = 1.6;
+        const base = 50;
+        const perKm = 1.6;
         let total = base + (distance * perKm);
 
         if (needsStairs) total += 30;
@@ -259,7 +260,7 @@ export function PriceEstimator() {
     );
 }
 
-function ToggleButton({ active, onClick, icon: Icon, label }: { active: boolean, onClick: () => void, icon: any, label: string }) {
+function ToggleButton({ active, onClick, icon: Icon, label }: { active: boolean, onClick: () => void, icon: ComponentType<{ className?: string }>, label: string }) {
     return (
         <button
             onClick={onClick}

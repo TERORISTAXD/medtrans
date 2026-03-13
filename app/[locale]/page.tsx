@@ -93,7 +93,7 @@ function Hero() {
                             { icon: Shield, text: t("trust_licensed") },
                             { icon: Clock, text: t("trust_response") },
                             { icon: Stethoscope, text: t("trust_staff") },
-                        ].map(({ icon: Icon, text }) => (
+                        ].map(({ icon: _, text }) => (
                             <div key={text} className="flex items-center gap-2 text-sm text-gray-300">
                                 <CheckCircle className="h-4 w-4 text-brand-red-light flex-shrink-0" />
                                 {text}
