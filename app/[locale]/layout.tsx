@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     title: "MedTrans — Medical Transport & Private Ambulance | 24/7 Service",
     description:
         "Professional medical transport and private ambulance services available 24/7. Hospital transfers, medical events, international transport, and disabled patient transport.",
+    icons: {
+        icon: "/favicon.ico",
+        shortcut: "/favicon.ico"
+    }
 };
 
 export default async function RootLayout({

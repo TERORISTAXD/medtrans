@@ -1,14 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Phone, Menu, X, Ambulance } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 
-const PHONE_NUMBER = "+359 888 000 000";
-const PHONE_HREF = "tel:+359888000000";
+const PHONE_PLEVEN = "0890 150 160";
+const PHONE_PLEVEN_HREF = "tel:+359890150160";
+const PHONE_TARNOVO = "0888 645 380";
+const PHONE_TARNOVO_HREF = "tel:+359888645380";
 
 export function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -61,18 +63,18 @@ export function Header() {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between gap-4 sm:h-18">
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-                            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-red text-white">
-                                <Ambulance className="h-5 w-5" />
+                        <Link href="/" className="flex items-center gap-3 shrink-0 group">
+                            <div className="relative h-10 w-10 shrink-0">
+                                <Image
+                                    src="/images/logo.png"
+                                    alt="MedTrans Logo"
+                                    fill
+                                    className="object-contain"
+                                />
                             </div>
-                            <div className="flex flex-col leading-tight">
-                                <span className="text-lg font-bold text-gray-900 tracking-tight">
-                                    MedTrans
-                                </span>
-                                <span className="text-[10px] font-medium text-gray-500 tracking-widest uppercase -mt-0.5 hidden sm:block">
-                                    Medical Transport
-                                </span>
-                            </div>
+                            <span className="text-2xl font-black tracking-tighter text-gray-900">
+                                Med<span className="text-brand-red">Trans</span>
+                            </span>
                         </Link>
 
                         {/* Desktop Nav */}
@@ -142,16 +144,29 @@ export function Header() {
                                 )}
                             </div>
 
-                            {/* Call 24/7 — always visible */}
-                            <a
-                                href={PHONE_HREF}
-                                className="pulse-ring relative flex items-center gap-2 rounded-lg bg-brand-red px-3 py-2 text-sm font-bold text-white shadow-md transition-all duration-200 hover:bg-brand-red-dark hover:shadow-lg sm:px-4 sm:py-2.5"
-                                aria-label={`Call us now: ${PHONE_NUMBER}`}
-                            >
-                                <Phone className="h-4 w-4 animate-pulse-slow" />
-                                <span className="hidden sm:inline">{tCommon("call_24_7")}</span>
-                                <span className="sm:hidden">{tCommon("call_now")}</span>
-                            </a>
+
+                                <div className="relative group/callbtn">
+                                    <button
+                                        className="pulse-ring relative flex items-center gap-2 rounded-lg bg-brand-red px-3 py-2 text-sm font-bold text-white shadow-md transition-all duration-200 hover:bg-brand-red-dark hover:shadow-lg sm:px-4 sm:py-2.5"
+                                        aria-label="Call us now"
+                                    >
+                                        <Phone className="h-4 w-4 animate-pulse-slow" />
+                                        <span className="hidden sm:inline">{tCommon("call_24_7")}</span>
+                                        <span className="sm:hidden">{tCommon("call_now")}</span>
+                                    </button>
+
+                                    <div className="absolute right-0 top-full mt-2 w-48 rounded-xl bg-white p-2 shadow-xl ring-1 ring-black/5 opacity-0 invisible group-hover/callbtn:opacity-100 group-hover/callbtn:visible transition-all z-50">
+                                        <div className="text-xs font-bold text-gray-400 uppercase px-3 py-1.5 mb-1">{tCommon("call_now")}</div>
+                                        <a href={PHONE_PLEVEN_HREF} className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-brand-red/5 hover:text-brand-red text-sm font-semibold text-gray-700 transition-colors">
+                                            <Phone className="h-4 w-4 text-gray-400" />
+                                            <div>Плевен<div className="text-xs font-bold">{PHONE_PLEVEN}</div></div>
+                                        </a>
+                                        <a href={PHONE_TARNOVO_HREF} className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-brand-red/5 hover:text-brand-red text-sm font-semibold text-gray-700 transition-colors">
+                                            <Phone className="h-4 w-4 text-gray-400" />
+                                            <div>В. Търново<div className="text-xs font-bold">{PHONE_TARNOVO}</div></div>
+                                        </a>
+                                    </div>
+                                </div>
 
                             {/* Mobile hamburger */}
                             <button
@@ -188,13 +203,22 @@ export function Header() {
                                     {link.label}
                                 </Link>
                             ))}
-                            <a
-                                href={PHONE_HREF}
-                                className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-base font-bold text-white"
-                            >
-                                <Phone className="h-4 w-4" />
-                                {PHONE_NUMBER}
-                            </a>
+                            <div className="mt-2 flex flex-col gap-2">
+                                <a
+                                    href={PHONE_PLEVEN_HREF}
+                                    className="flex items-center justify-center gap-2 rounded-lg bg-brand-red/10 px-4 py-3 text-sm font-bold text-brand-red"
+                                >
+                                    <Phone className="h-4 w-4" />
+                                    Плевен: {PHONE_PLEVEN}
+                                </a>
+                                <a
+                                    href={PHONE_TARNOVO_HREF}
+                                    className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-sm font-bold text-white shadow-md"
+                                >
+                                    <Phone className="h-4 w-4" />
+                                    В. Търново: {PHONE_TARNOVO}
+                                </a>
+                            </div>
                         </nav>
                     </div>
                 )}

@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
+import Image from "next/image";
 import { AnimatedContainer } from "@/components/ui/AnimatedContainer";
 import {
     Activity,
@@ -8,13 +8,13 @@ import {
     Accessibility,
     CheckCircle,
     Phone,
-    ArrowRight,
     Stethoscope,
-    Building2,
 } from "lucide-react";
 
-const PHONE_HREF = "tel:+359888000000";
-const PHONE_NUMBER = "+359 888 000 000";
+const PHONE_PLEVEN = "0890 150 160";
+const PHONE_PLEVEN_HREF = "tel:+359890150160";
+const PHONE_TARNOVO = "0888 645 380";
+const PHONE_TARNOVO_HREF = "tel:+359888645380";
 
 export default function ServicesPage() {
     const t = useTranslations("Services");
@@ -146,25 +146,20 @@ export default function ServicesPage() {
                                 >
                                     {/* Visual Card */}
                                     <div className="flex-1">
-                                        <div className={`relative overflow-hidden rounded-2xl ${service.iconBg} p-10 text-white min-h-[260px] flex flex-col justify-between`}>
-                                            <div>
-                                                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white/20">
+                                        <div className="relative overflow-hidden rounded-2xl p-10 text-white min-h-[300px] flex flex-col justify-between group shadow-xl">
+                                            <Image
+                                                src={`/images/services/${service.id}.jpg`}
+                                                alt={service.title}
+                                                fill
+                                                className="object-cover absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-105"
+                                            />
+                                            <div className="absolute inset-0 bg-gray-900/50 z-10 transition-colors group-hover:bg-gray-900/60" />
+                                            <div className="relative z-20">
+                                                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-brand-red shadow-lg">
                                                     <Icon className="h-8 w-8 text-white" />
                                                 </div>
                                                 <h3 className="text-2xl font-bold">{service.title}</h3>
-                                                <p className="mt-1 text-white/80 text-sm">{service.subtitle}</p>
-                                            </div>
-                                            <div className="absolute bottom-0 right-0 opacity-10">
-                                                <Icon className="h-48 w-48 -mb-8 -mr-8" />
-                                            </div>
-                                            <div className="mt-6 relative z-10">
-                                                <a
-                                                    href={PHONE_HREF}
-                                                    className="inline-flex items-center gap-2 rounded-lg bg-white/20 px-4 py-2 text-sm font-semibold text-white hover:bg-white/30 transition-colors cursor-pointer"
-                                                >
-                                                    <Phone className="h-4 w-4" />
-                                                    {t("book_service")}
-                                                </a>
+                                                <p className="mt-2 text-white/90 text-sm font-medium">{service.subtitle}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -189,10 +184,7 @@ export default function ServicesPage() {
                                             ))}
                                         </ul>
                                         <div className="mt-6 flex flex-wrap gap-3">
-                                            <Link href="/contact" className="btn-primary text-sm">
-                                                {tCommon("book_now")} <ArrowRight className="h-4 w-4" />
-                                            </Link>
-                                            <a href={PHONE_HREF} className="btn-emergency text-sm">
+                                            <a href={PHONE_PLEVEN_HREF} className="btn-emergency text-sm">
                                                 <Phone className="h-4 w-4" />
                                                 {tCommon("call_now")}
                                             </a>
@@ -216,19 +208,19 @@ export default function ServicesPage() {
                     </p>
                     <div className="mt-6 flex flex-wrap justify-center gap-4">
                         <a
-                            href={PHONE_HREF}
-                            className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-3.5 text-base font-bold text-brand-red shadow-lg hover:shadow-xl transition-all hover:scale-105 cursor-pointer"
+                            href={PHONE_PLEVEN_HREF}
+                            className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3.5 text-sm font-bold text-brand-red shadow-lg hover:shadow-xl transition-all hover:scale-105 cursor-pointer"
                         >
                             <Phone className="h-5 w-5" />
-                            {PHONE_NUMBER}
+                            Плевен: {PHONE_PLEVEN}
                         </a>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-2 rounded-lg border-2 border-white/40 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-all cursor-pointer"
+                        <a
+                            href={PHONE_TARNOVO_HREF}
+                            className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3.5 text-sm font-bold text-brand-red shadow-lg hover:shadow-xl transition-all hover:scale-105 cursor-pointer"
                         >
-                            <Building2 className="h-5 w-5" />
-                            {t("cta_btn")}
-                        </Link>
+                            <Phone className="h-5 w-5" />
+                            В.Търново: {PHONE_TARNOVO}
+                        </a>
                     </div>
                 </AnimatedContainer>
             </section>

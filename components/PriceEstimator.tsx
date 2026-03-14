@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Phone, ArrowRight, Check, Activity, Users, Repeat } from "lucide-react";
+import { Link } from "@/i18n/routing";
+import { Check, Activity, Users, Repeat, ArrowRight } from "lucide-react";
 import type { ComponentType } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -43,7 +43,6 @@ export function PriceEstimator() {
     const [needsStairs, setNeedsStairs] = useState(false);
     const [needsMedical, setNeedsMedical] = useState(false);
     const [isTwoWay, setIsTwoWay] = useState(false);
-    const [phone, setPhone] = useState("");
 
     // Calculate distance automatically
     useEffect(() => {
@@ -58,12 +57,12 @@ export function PriceEstimator() {
     const [estimate, setEstimate] = useState({ min: 0, max: 0 });
 
     useEffect(() => {
-        const base = 50;
-        const perKm = 1.6;
+        const base = 25;
+        const perKm = 0.8;
         let total = base + (distance * perKm);
 
-        if (needsStairs) total += 30;
-        if (needsMedical) total += 120;
+        if (needsStairs) total += 15;
+        if (needsMedical) total += 60;
         if (isTwoWay) total *= 1.8;
 
         setEstimate({
@@ -103,33 +102,6 @@ export function PriceEstimator() {
                             ))}
                         </motion.h2>
 
-                        {/* Vehicle Showcase */}
-                        <div className="grid grid-cols-2 gap-4 mb-8">
-                            {[
-                                { img: "ambulance-standard.png", label: "Standard" },
-                                { img: "ambulance-icu.png", label: "Intensive Care" }
-                            ].map((v, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.3 + i * 0.1 }}
-                                    className="bg-gray-50 p-4 rounded-3xl border border-gray-100 group"
-                                >
-                                    <div className="relative h-24 mb-3 overflow-hidden rounded-xl">
-                                        <Image
-                                            src={`/images/fleet/${v.img}`}
-                                            alt={v.label}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                        />
-                                    </div>
-                                    <div className="text-xs font-black uppercase tracking-widest text-gray-400 group-hover:text-brand-red transition-colors">
-                                        {v.label}
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
 
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -170,7 +142,7 @@ export function PriceEstimator() {
 
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center px-1">
-                                        <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Estimated Distance</label>
+                                        <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t("estimated_distance")}</label>
                                         <div className="flex items-center gap-2">
                                             {pickup && destination && (
                                                 <motion.span
@@ -226,30 +198,22 @@ export function PriceEstimator() {
                                         <span className="text-4xl lg:text-6xl font-black text-gray-900 tracking-tight">
                                             {estimate.min} - {estimate.max}
                                         </span>
-                                        <span className="text-2xl font-bold text-brand-red">BGN</span>
+                                        <span className="text-2xl font-bold text-brand-red">EUR</span>
                                     </div>
                                     <p className="italic text-gray-400 text-sm mt-2 font-medium">
-                                        {tCommon("starting_from")} {estimate.min} BGN
+                                        {tCommon("starting_from")} {estimate.min} EUR
                                     </p>
                                 </div>
 
-                                {/* Lead Gen */}
-                                <div className="pt-8 space-y-4">
-                                    <div className="relative group/input">
-                                        <Phone className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-300 group-focus-within/input:text-brand-red transition-colors" />
-                                        <input
-                                            type="tel"
-                                            value={phone}
-                                            onChange={(e) => setPhone(e.target.value)}
-                                            placeholder={t("phone_placeholder")}
-                                            className="w-full bg-white border border-gray-100 p-6 pl-16 rounded-[2rem] text-lg font-bold shadow-sm focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red transition-all outline-none"
-                                        />
-                                    </div>
-                                    <button className="w-full bg-brand-red text-white p-6 rounded-[2rem] font-black text-xl flex items-center justify-center gap-3 shadow-[0_20px_40px_-10px_rgba(220,38,38,0.4)] hover:shadow-[0_25px_50px_-10px_rgba(220,38,38,0.5)] active:scale-[0.98] transition-all group overflow-hidden relative">
-                                        <span className="relative z-10 transition-transform group-hover:-translate-x-1">{t("cta")}</span>
+                                <div className="pt-8 px-4">
+                                    <Link 
+                                        href="/contact" 
+                                        className="w-full bg-brand-red text-white p-6 rounded-[2rem] font-black text-xl flex items-center justify-center gap-3 shadow-[0_20px_40px_-10px_rgba(220,38,38,0.4)] hover:shadow-[0_25px_50px_-10px_rgba(220,38,38,0.5)] active:scale-[0.98] transition-all group overflow-hidden relative"
+                                    >
+                                        <span className="relative z-10 transition-transform group-hover:-translate-x-1">{t("contact_cta")}</span>
                                         <ArrowRight className="h-6 w-6 relative z-10 transition-transform group-hover:translate-x-1" />
                                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

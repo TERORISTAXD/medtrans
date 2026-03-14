@@ -46,7 +46,8 @@ export function AnimatedContainer({
             variants={getVariants()}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.1 }}
+            style={{ willChange: "transform, opacity" }}
             transition={{
                 duration: 0.6,
                 ease: [0.22, 1, 0.36, 1], // Custom cubic bezier

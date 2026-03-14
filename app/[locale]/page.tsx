@@ -3,16 +3,15 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { AnimatedContainer } from "@/components/ui/AnimatedContainer";
 import { PriceEstimator } from "@/components/PriceEstimator";
+import { TestimonialCarousel } from "@/components/ui/TestimonialCarousel";
 import {
     Phone,
-    CalendarCheck,
     Clock,
     Shield,
     Heart,
     Users,
     Ambulance,
     ArrowRight,
-    Star,
     CheckCircle,
     Stethoscope,
     Globe,
@@ -20,13 +19,14 @@ import {
     Activity,
 } from "lucide-react";
 
-const PHONE_HREF = "tel:+359888000000";
-const PHONE_NUMBER = "+359 888 000 000";
+const PHONE_PLEVEN = "0890 150 160";
+const PHONE_PLEVEN_HREF = "tel:+359890150160";
+const PHONE_TARNOVO = "0888 645 380";
+const PHONE_TARNOVO_HREF = "tel:+359888645380";
 
 // ─── Hero ───────────────────────────────────────────────────────────────────
 function Hero() {
     const t = useTranslations("Home");
-    const tCommon = useTranslations("Common");
 
     return (
         <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-gray-900">
@@ -75,17 +75,14 @@ function Hero() {
                     </AnimatedContainer>
 
                     <AnimatedContainer type="slide-up" delay={0.4} className="flex flex-wrap gap-4">
-                        <a href={PHONE_HREF} className="btn-emergency text-base sm:text-lg px-6 sm:px-8 py-3.5">
+                        <a href={PHONE_PLEVEN_HREF} className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3.5">
                             <Phone className="h-5 w-5" />
-                            {tCommon("call_emergency")}
+                            {t("hero_call_pleven")}
                         </a>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-2 rounded-lg border-2 border-white/30 bg-white/10 px-6 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/50 sm:text-lg sm:px-8"
-                        >
-                            <CalendarCheck className="h-5 w-5" />
-                            {tCommon("book_transport")}
-                        </Link>
+                        <a href={PHONE_TARNOVO_HREF} className="btn-primary-outline text-base sm:text-lg px-6 sm:px-8 py-3.5">
+                            <Phone className="h-5 w-5" />
+                            {t("hero_call_tarnovo")}
+                        </a>
                     </AnimatedContainer>
 
                     <AnimatedContainer type="slide-up" delay={0.5} className="mt-10 flex flex-wrap gap-6">
@@ -210,46 +207,21 @@ function Testimonials() {
         { name: t("t1_name"), role: t("t1_role"), content: t("t1_content"), rating: 5 },
         { name: t("t2_name"), role: t("t2_role"), content: t("t2_content"), rating: 5 },
         { name: t("t3_name"), role: t("t3_role"), content: t("t3_content"), rating: 5 },
+        { name: t("t4_name"), role: t("t4_role"), content: t("t4_content"), rating: 5 },
+        { name: t("t5_name"), role: t("t5_role"), content: t("t5_content"), rating: 5 },
+        { name: t("t6_name"), role: t("t6_role"), content: t("t6_content"), rating: 5 },
+        { name: t("t7_name"), role: t("t7_role"), content: t("t7_content"), rating: 5 },
+        { name: t("t8_name"), role: t("t8_role"), content: t("t8_content"), rating: 5 },
+        { name: t("t9_name"), role: t("t9_role"), content: t("t9_content"), rating: 5 },
     ];
 
     return (
-        <section className="section-padding bg-gradient-to-br from-brand-red-dark to-brand-red">
-            <div className="container-max">
-                <AnimatedContainer className="text-center mb-14">
-                    <span className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">{t("test_badge")}</span>
-                    <h2 className="mt-2 text-3xl font-bold text-white sm:text-4xl">{t("test_title")}</h2>
-                </AnimatedContainer>
-
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {testimonials.map((test, index) => (
-                        <AnimatedContainer key={test.name} delay={0.1 * index} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
-                            <div className="mb-4 flex gap-1">
-                                {Array.from({ length: test.rating }).map((_, i) => (
-                                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                                ))}
-                            </div>
-                            <p className="mb-6 text-sm leading-relaxed text-gray-300 italic">
-                                &ldquo;{test.content}&rdquo;
-                            </p>
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-red/30 text-white font-bold text-sm">
-                                    {test.name.charAt(0)}
-                                </div>
-                                <div className="text-left">
-                                    <p className="text-sm font-semibold text-white">{test.name}</p>
-                                    <p className="text-xs text-brand-red-light">{test.role}</p>
-                                </div>
-                            </div>
-                        </AnimatedContainer>
-                    ))}
-                </div>
-            </div>
-        </section>
+        <TestimonialCarousel testimonials={testimonials} title={t("test_title")} badge={t("test_badge")} />
     );
 }
 
-// ─── Emergency CTA Strip ──────────────────────────────────────────────────
-function EmergencyCTA() {
+// ─── Call CTA Strip ──────────────────────────────────────────────────
+function CallCTA() {
     const t = useTranslations("Home");
 
     return (
@@ -260,10 +232,16 @@ function EmergencyCTA() {
                         <h2 className="text-2xl font-bold text-white sm:text-3xl">{t("cta_title")}</h2>
                         <p className="mt-2 text-red-100 text-lg">{t("cta_desc")}</p>
                     </div>
-                    <a href={PHONE_HREF} className="flex-shrink-0 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 text-lg font-bold text-brand-red shadow-xl transition-all hover:shadow-2xl hover:scale-105">
-                        <Phone className="h-6 w-6" />
-                        {PHONE_NUMBER}
-                    </a>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                        <a href={PHONE_PLEVEN_HREF} className="flex-shrink-0 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-base font-bold text-brand-red shadow-xl transition-all hover:shadow-2xl hover:scale-105">
+                            <Phone className="h-5 w-5" />
+                            Плевен: {PHONE_PLEVEN}
+                        </a>
+                        <a href={PHONE_TARNOVO_HREF} className="flex-shrink-0 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-base font-bold text-brand-red shadow-xl transition-all hover:shadow-2xl hover:scale-105">
+                            <Phone className="h-5 w-5" />
+                            В. Търново: {PHONE_TARNOVO}
+                        </a>
+                    </div>
                 </AnimatedContainer>
             </div>
         </section>
@@ -279,7 +257,7 @@ export default function HomePage() {
             <ServicesSummary />
             <PriceEstimator />
             <Testimonials />
-            <EmergencyCTA />
+            <CallCTA />
         </>
     );
 }
