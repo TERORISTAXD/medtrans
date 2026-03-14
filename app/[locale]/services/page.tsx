@@ -151,6 +151,7 @@ export default function ServicesPage() {
                                                 src={`/images/services/${service.id}.jpg`}
                                                 alt={service.title}
                                                 fill
+                                                unoptimized
                                                 className="object-cover absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-105"
                                             />
                                             <div className="absolute inset-0 bg-gray-900/50 z-10 transition-colors group-hover:bg-gray-900/60" />

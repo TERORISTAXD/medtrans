@@ -37,6 +37,7 @@ function Hero() {
                     alt="MedTrans Professional Medical Team"
                     fill
                     priority
+                    unoptimized
                     className="object-cover object-center lg:object-right"
                 />
                 <div className="absolute inset-0 bg-gray-900/60 lg:bg-gradient-to-r lg:from-gray-900/90 lg:via-gray-900/50 lg:to-transparent" />
