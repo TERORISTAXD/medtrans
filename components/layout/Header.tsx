@@ -61,18 +61,19 @@ export function Header() {
                 )}
             >
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="flex h-16 items-center justify-between gap-4 sm:h-18">
+                    <div className="flex h-16 items-center justify-between gap-2 sm:gap-4 sm:h-18">
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-3 shrink-0 group">
-                            <div className="relative h-10 w-10 shrink-0">
+                        <Link href="/" className="flex items-center gap-1.5 sm:gap-3 shrink-0 group">
+                            <div className="relative h-8 w-8 sm:h-10 sm:w-10 shrink-0 transform-gpu transition-transform duration-300 group-hover:scale-110">
                                 <Image
                                     src="/images/logo.png"
                                     alt="MedTrans Logo"
                                     fill
+                                    priority
                                     className="object-contain"
                                 />
                             </div>
-                            <span className="text-2xl font-black tracking-tighter text-gray-900">
+                            <span className="text-xl sm:text-2xl font-black tracking-tighter text-gray-900">
                                 Med<span className="text-brand-red">Trans</span>
                             </span>
                         </Link>
@@ -96,16 +97,16 @@ export function Header() {
                         </nav>
 
                         {/* CTA + Language + Mobile Toggle */}
-                        <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="flex items-center gap-1.5 sm:gap-3">
                             {/* Language Switcher */}
-                            <div className="relative">
+                            <div className="relative shrink-0">
                                 <button
                                     onClick={() => setLangOpen(!langOpen)}
-                                    className="flex h-9 items-center gap-2 rounded-full border border-gray-200 px-2.5 hover:bg-gray-100 focus:outline-none transition-all duration-200"
+                                    className="flex h-8 w-10 sm:h-9 sm:w-auto items-center justify-center gap-2 rounded-full border border-gray-200 px-0 sm:px-2.5 hover:bg-gray-100 focus:outline-none transition-colors duration-200"
                                     aria-expanded={langOpen}
                                     title={languages[locale as keyof typeof languages]?.label}
                                 >
-                                    <div className="relative h-5 w-7 overflow-hidden rounded-sm shadow-sm">
+                                    <div className="relative h-4 w-6 sm:h-5 sm:w-7 overflow-hidden rounded-sm shadow-sm">
                                         <Image
                                             src={languages[locale as keyof typeof languages]?.flag}
                                             alt=""
@@ -117,7 +118,7 @@ export function Header() {
                                 </button>
 
                                 {langOpen && (
-                                    <div className="absolute right-0 mt-2 w-40 origin-top-right rounded-xl bg-white p-1 shadow-xl ring-1 ring-black/5 focus:outline-none">
+                                    <div className="absolute right-0 mt-2 w-40 origin-top-right rounded-xl bg-white p-1 shadow-xl ring-1 ring-black/5 focus:outline-none z-[60]">
                                         <div className="py-0.5">
                                             <button
                                                 onClick={() => switchLanguage("bg")}
@@ -147,12 +148,12 @@ export function Header() {
 
                                 <div className="relative group/callbtn">
                                     <button
-                                        className="pulse-ring relative flex items-center gap-2 rounded-lg bg-brand-red px-3 py-2 text-sm font-bold text-white shadow-md transition-all duration-200 hover:bg-brand-red-dark hover:shadow-lg sm:px-4 sm:py-2.5"
+                                        className="pulse-ring relative flex items-center gap-2 rounded-lg bg-brand-red px-2 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold text-white shadow-md transition-all duration-200 hover:bg-brand-red-dark hover:shadow-lg will-change-transform active:scale-95"
                                         aria-label="Call us now"
                                     >
-                                        <Phone className="h-4 w-4 animate-pulse-slow" />
-                                        <span className="hidden sm:inline">{tCommon("call_24_7")}</span>
-                                        <span className="sm:hidden">{tCommon("call_now")}</span>
+                                        <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-pulse-slow shrink-0" />
+                                        <span className="hidden min-[400px]:inline">{locale === 'bg' ? 'Обадете се' : 'Call'}</span>
+                                        <span className="hidden sm:inline-block">{locale === 'bg' ? 'сега' : 'now'}</span>
                                     </button>
 
                                     <div className="absolute right-0 top-full mt-2 w-48 rounded-xl bg-white p-2 shadow-xl ring-1 ring-black/5 opacity-0 invisible group-hover/callbtn:opacity-100 group-hover/callbtn:visible transition-all z-50">

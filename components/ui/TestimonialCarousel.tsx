@@ -58,7 +58,7 @@ export function TestimonialCarousel({ testimonials, title, badge }: { testimonia
                                 {currentTestimonials.map((testimonial, idx) => (
                                     <div 
                                         key={idx} 
-                                        className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-2xl flex flex-col h-full hover:bg-white/10 transition-colors duration-300 group"
+                                        className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-2xl flex flex-col h-full hover:bg-white/10 transition-[background-color] duration-300 group will-change-transform transform-gpu"
                                     >
                                         <div className="mb-6 flex gap-1">
                                             {Array.from({ length: testimonial.rating }).map((_, i) => (

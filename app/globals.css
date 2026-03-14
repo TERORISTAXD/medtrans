@@ -61,6 +61,8 @@ body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     box-shadow: none !important;
+    overflow-x: hidden;
+    width: 100%;
   }
 }
 
@@ -68,6 +70,7 @@ body {
 @layer components {
   .section-padding {
     @apply px-4 py-16 sm:px-6 lg:px-8 lg:py-24;
+    contain: content;
   }
 
   .container-max {
@@ -75,19 +78,27 @@ body {
   }
 
   .btn-emergency {
-    @apply inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-base font-bold text-white shadow-lg transition-all duration-200 hover:bg-brand-red-dark hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2;
+    @apply inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-base font-bold text-white shadow-lg transition-[transform,background-color,shadow] duration-200 hover:bg-brand-red-dark hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-base font-semibold text-white shadow-md transition-all duration-200 hover:bg-brand-red-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2;
+    @apply inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-base font-semibold text-white shadow-md transition-[transform,background-color,shadow] duration-200 hover:bg-brand-red-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .btn-primary-outline {
-    @apply inline-flex items-center gap-2 rounded-lg border-2 border-brand-red bg-transparent px-6 py-3 text-base font-semibold text-brand-red shadow-sm transition-all duration-200 hover:bg-brand-red hover:text-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2;
+    @apply inline-flex items-center gap-2 rounded-lg border-2 border-brand-red bg-transparent px-6 py-3 text-base font-semibold text-brand-red shadow-sm transition-[transform,background-color,color,shadow] duration-200 hover:bg-brand-red hover:text-white hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 shadow-sm;
+    @apply transition-[transform,shadow] duration-300 hover:-translate-y-1 shadow-sm;
+    will-change: transform;
+    transform: translateZ(0);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
 
