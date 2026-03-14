@@ -62,7 +62,7 @@ export default function ServicesPage() {
             description: t("s3_desc"),
             features: [
                 t("s3_f1"), t("s3_f2"), t("s3_f3"),
-                t("s3_f4"), t("s3_f5"), t("s3_f6")
+                t("s3_f4"), t("s3_f5")
             ],
             image: true,
         },
