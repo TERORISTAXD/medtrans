@@ -2,7 +2,6 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { AnimatedContainer } from "@/components/ui/AnimatedContainer";
-import { PriceEstimator } from "@/components/PriceEstimator";
 import { TestimonialCarousel } from "@/components/ui/TestimonialCarousel";
 import {
     Phone,
@@ -256,7 +255,6 @@ export default function HomePage() {
             <Hero />
             <WhyChooseUs />
             <ServicesSummary />
-            <PriceEstimator />
             <Testimonials />
             <CallCTA />
         </>

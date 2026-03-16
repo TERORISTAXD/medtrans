@@ -6,7 +6,6 @@ import {
     Heart,
     Globe,
     Accessibility,
-    CheckCircle,
     Phone,
     Stethoscope,
 } from "lucide-react";
@@ -61,8 +60,8 @@ export default function ServicesPage() {
             subtitle: t("s3_sub"),
             description: t("s3_desc"),
             features: [
-                t("s3_f1"), t("s3_f2"), t("s3_f3"),
-                t("s3_f4"), t("s3_f5")
+                t("s3_f1"), t("s3_f3"),
+                t("s3_f4")
             ],
             image: true,
         },
@@ -179,7 +178,7 @@ export default function ServicesPage() {
                                         <ul className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
                                             {service.features.map((feature) => (
                                                 <li key={feature} className="flex items-start gap-2 text-sm text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                                                    <span className="mt-1.5 h-2 w-2 rounded-full bg-brand-red flex-shrink-0" />
                                                     {feature}
                                                 </li>
                                             ))}

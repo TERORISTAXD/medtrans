@@ -12,7 +12,7 @@ const PHONE_PLEVEN = "0890 150 160";
 const PHONE_PLEVEN_HREF = "tel:+359890150160";
 const PHONE_TARNOVO = "0888 645 380";
 const PHONE_TARNOVO_HREF = "tel:+359888645380";
-const EMAIL = "ivailo_73@abv.bg";
+const EMAIL = "lineika-medtrans@abv.bg";
 
 export default function ContactPage() {
     const t = useTranslations("Contact");

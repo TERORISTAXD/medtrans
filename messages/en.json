@@ -125,10 +125,8 @@
         "s3_sub": "Patient repatriation & cross-border transfers",
         "s3_desc": "We handle complex international medical transport including patient repatriation from abroad, cross-border hospital transfers, and coordination with foreign medical institutions and insurance providers.",
         "s3_f1": "Medical repatriation from any European country",
-        "s3_f2": "Full documentation and customs assistance",
         "s3_f3": "Medical escort during air and road travel",
         "s3_f4": "Insurance and assistance company coordination",
-        "s3_f5": "24/7 multi-language dispatch support",
         "s4_sub": "Compassionate, accessible transport",
         "s4_desc": "Specialized transport for patients with mobility limitations, wheelchair users, and patients requiring stretcher transport. We provide dignified, comfortable, and safe journeys for every patient.",
         "s4_f1": "Wheelchair-accessible vehicles",
@@ -230,20 +228,5 @@
         "success_title": "Request Received!",
         "success_desc": "Thank you for your booking request. Our team will contact you shortly to confirm the details.",
         "success_btn": "Submit another request"
-    },
-    "PriceEstimator": {
-        "title": "Distance & Price Estimator",
-        "pickup": "Starting point",
-        "destination": "End point",
-        "search_label": "Search for a city, town or village...",
-        "search_placeholder": "Search city or village...",
-        "no_results": "No Bulgarian settlement found.",
-        "stairs": "Stairs/Carrying Required",
-        "medical_team": "Doctor/Nurse Required",
-        "two_way": "Two-way Trip",
-        "price_range": "Estimated Price Range:",
-        "estimated_distance": "Estimated distance",
-        "disclaimer": "*This is a simulated estimate. Final price depends on specific medical needs and exact distance.",
-        "contact_cta": "Contact Us to Book"
     }
 }
